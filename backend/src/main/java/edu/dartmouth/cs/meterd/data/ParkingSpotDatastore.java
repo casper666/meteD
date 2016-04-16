@@ -12,6 +12,7 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,17 +113,36 @@ public class ParkingSpotDatastore {
         return ret;
     }
 
-//        TODO: define parameters for query
-//    public static ArrayList<ParkingSpot> query() {
-//
-//    }
 
-    public static ParkingSpot getParkingSpotByCoord(Float longitude, Float latitude, Transaction txn) {
+    public static ArrayList<ParkingSpot> query(double longitude, double latitude) {
+
+        ArrayList<ParkingSpot> resultList = new ArrayList<ParkingSpot>();
+
+        // return everything right now
+        Query query = new Query(ParkingSpot.PARKINGSPOT_ENTITY_NAME);
+        // get every record from datastore, no filter
+        query.setFilter(null);
+        // set query's ancestor to get strong consistency
+        query.setAncestor(getKey());
+
+        PreparedQuery pq = mDatastore.prepare(query);
+
+        for (Entity entity : pq.asIterable()) {
+            ParkingSpot parkingSpot = getParkingSpotFromEntity(entity);
+            if (parkingSpot != null) {
+                resultList.add(parkingSpot);
+            }
+        }
+
+        return resultList;
+    }
+
+    public static ParkingSpot getParkingSpotByCoord(double longitude, double latitude, Transaction txn) {
         Entity result = null;
         try {
             result = mDatastore.get(KeyFactory.createKey(getKey(),
                     ParkingSpot.PARKINGSPOT_ENTITY_NAME,
-                    Float.toString(longitude)+"+"+Float.toString(latitude)));
+                    Double.toString(longitude)+"+"+Double.toString(latitude)));
         } catch (Exception ex) {
 
         }
@@ -139,13 +159,13 @@ public class ParkingSpotDatastore {
                 (float) entity.getProperty(ParkingSpot.FIELD_NAME_LONGITUDE),
                 (float) entity.getProperty(ParkingSpot.FIELD_NAME_LATITUDE),
                 (String) entity.getProperty(ParkingSpot.FIELD_NAME_STREETNAME),
-                (Date) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGSTARTTIME),
-                (Date) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGENDTIME),
+                (int) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGSTARTTIME),
+                (int) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGENDTIME),
                 (float) entity.getProperty(ParkingSpot.FIELD_NAME_HOURLYFEE),
                 (String) entity.getProperty(ParkingSpot.FIELD_NAME_FREEDAYS),
                 (boolean) entity.getProperty(ParkingSpot.FIELD_NAME_ISOCCUPIED),
-                (Date) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDSTARTTIME),
-                (Date) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDENDTIME));
+                (int) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDSTARTTIME),
+                (int) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDENDTIME));
     }
 
 

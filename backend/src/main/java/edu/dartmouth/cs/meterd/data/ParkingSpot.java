@@ -21,21 +21,21 @@ public class ParkingSpot {
     public static final String FIELD_NAME_OCCUPIEDSTARTTIME = "occupiedStartTime";
     public static final String FIELD_NAME_OCCUPIEDENDTIME = "occupiedEndTime";
 
-    public Float mLongitude;
-    public Float mLatitude;
+    public double mLongitude;
+    public double mLatitude;
     public String mStreetName;
-    public Date mDailyFreeParkingStartTime;
-    public Date mDailyFreeParkingEndTime;
-    public Float mHourlyFee;
+    public int mDailyFreeParkingStartTime;
+    public int mDailyFreeParkingEndTime;
+    public double mHourlyFee;
     public String mFreeDays;
     public Boolean mIsOccupied;
-    public Date mOccupiedStartTime;
-    public Date mOccupiedEndTime;
+    public int mOccupiedStartTime;
+    public int mOccupiedEndTime;
 
-    public ParkingSpot(float _longitude, float _latitude, String _streetName,
-                       Date _dailyFreeParkingStartTime, Date _dailyFreeParkingEndTime,
-                       float _hourlyFee, String _freeDays, boolean _isOccupied,
-                       Date _occupiedStartTime, Date _occupiedEndTime) {
+    public ParkingSpot(double _longitude, double _latitude, String _streetName,
+                       int _dailyFreeParkingStartTime, int _dailyFreeParkingEndTime,
+                       double _hourlyFee, String _freeDays, boolean _isOccupied,
+                       int _occupiedStartTime, int _occupiedEndTime) {
         mLongitude = _longitude;
         mLatitude = _latitude;
         mStreetName = _streetName;
@@ -49,8 +49,8 @@ public class ParkingSpot {
     }
 
     public String getCoordInString () {
-        return Float.toString(this.mLongitude)
+        return Double.toString(this.mLongitude)
                 + "+" +
-                Float.toString(this.mLatitude);
+                Double.toString(this.mLatitude);
     }
 }
