@@ -10,7 +10,6 @@ android {
         targetSdkVersion 23
         multiDexEnabled true
         versionCode 1
-        multiDexEnabled true
         versionName "1.0"
     }
     buildTypes {
@@ -28,5 +27,7 @@ dependencies {
     compile 'com.google.android.gms:play-services:8.4.0'
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.maps.android:android-maps-utils:0.4'
+    compile 'com.wang.avi:library:1.0.5'
+    compile 'com.nineoldandroids:library:2.4.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }

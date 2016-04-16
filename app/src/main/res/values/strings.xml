@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MeteD</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">MeteD</string>
     <string name="google_app_id">92411154862</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Info</string>
 </resources>
