@@ -32,8 +32,8 @@
 			if (resultList != null) {
 				for (ParkingSpot parkingSpot : resultList) {
 		%> Longitude:<%=parkingSpot.mLongitude%>&nbsp; Latitude:<%=parkingSpot.mLatitude%>&nbsp;
-		StreetName:<%=parkingSpot.mStreetName%>&nbsp; &nbsp;&nbsp; <a
-		href="/delete.do?lat=<%=parkingSpot.getmLatitude()%>&long=<%=parkingSpot.getmLongitude()%>">delete</a> <br> <%
+		StreetName:<%=parkingSpot.mStreetName%>&nbsp; &nbsp;&nbsp;
+		<a href="/delete.do?lat=<%=parkingSpot.getmLatitude()%>&long=<%=parkingSpot.getmLongitude()%>">delete</a> <br> <%
  	}
  	}
  %>

@@ -24,14 +24,22 @@ public class AddServlet extends HttpServlet{
             throws IOException, ServletException {
         String longitude = req.getParameter("longitude");
         String latitude = req.getParameter("latitude");
-        String streetName = req.getParameter("streetName");
-        String dailyFreeParkingStartTime = req.getParameter("dailyFreeParkingStartTime");
-        String dailyFreeParkingEndTime = req.getParameter("dailyFreeParkingEndTime");
-        String hourlyFee = req.getParameter("hourlyFee");
-        String freeDays = req.getParameter("freeDays");
-        String isOccupied = req.getParameter("isOccupied");
-        String occupiedStartTime = req.getParameter("occupiedStartTime");
+//        String streetName = req.getParameter("streetName");
+//        String dailyFreeParkingStartTime = req.getParameter("dailyFreeParkingStartTime");
+//        String dailyFreeParkingEndTime = req.getParameter("dailyFreeParkingEndTime");
+//        String hourlyFee = req.getParameter("hourlyFee");
+//        String freeDays = req.getParameter("freeDays");
+//        String isOccupied = req.getParameter("isOccupied");
+//        String occupiedStartTime = req.getParameter("occupiedStartTime");
         String occupiedEndTime = req.getParameter("occupiedEndTime");
+
+        String streetName = "mock-street";
+        String dailyFreeParkingStartTime = "1234";
+        String dailyFreeParkingEndTime = "1234";
+        String hourlyFee = "0.75";
+        String freeDays = "mock-freedays";
+        String isOccupied = "mock-isOccupied";
+        String occupiedStartTime = "1234";
 
         if (longitude == null || longitude.equals("") || latitude == null || latitude.equals("")) {
             req.setAttribute("_retStr", "invalid input");
@@ -62,7 +70,7 @@ public class AddServlet extends HttpServlet{
             req.setAttribute("_retStr", longitude + "+" + latitude + " exists");
         }
 
-        getServletContext().getRequestDispatcher("/query_result.jsp").forward(
+        getServletContext().getRequestDispatcher("/query.do").forward(
                 req, resp);
     }
 

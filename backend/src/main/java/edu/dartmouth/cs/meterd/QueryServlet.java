@@ -26,6 +26,9 @@ public class QueryServlet extends HttpServlet{
         String name = req.getParameter("data");
 //        System.out.print("---------->" + name);
         ArrayList<ParkingSpot> result = ParkingSpotDatastore.query(1.0, 2.0);
+
+        System.out.printf("Number is %d\n", result.size());
+
         req.setAttribute("result", result);
 //        // creating the final JSON string
 //        JSONArray finalResult = new JSONArray();
@@ -45,7 +48,7 @@ public class QueryServlet extends HttpServlet{
 //        resp.setCharacterEncoding("UTF-8");
 //        resp.getWriter().write("Grader li diao bao le");
 
-        getServletContext().getRequestDispatcher("/query_result.jsp").forward(
+        getServletContext().getRequestDispatcher("/display.jsp").forward(
                 req, resp);
 
     }
