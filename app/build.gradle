@@ -8,6 +8,7 @@ android {
         applicationId "edu.dartmouth.cs.meted"
         minSdkVersion 22
         targetSdkVersion 23
+        multiDexEnabled true
         versionCode 1
         multiDexEnabled true
         versionName "1.0"
