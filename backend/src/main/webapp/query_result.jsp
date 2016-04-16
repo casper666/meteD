@@ -33,7 +33,7 @@
 				for (ParkingSpot parkingSpot : resultList) {
 		%> Longitude:<%=parkingSpot.mLongitude%>&nbsp; Latitude:<%=parkingSpot.mLatitude%>&nbsp;
 		StreetName:<%=parkingSpot.mStreetName%>&nbsp; &nbsp;&nbsp; <a
-		href="/delete.do?name=<%=parkingSpot.mLongitude%>">delete</a> <br> <%
+		href="/delete.do?lat=<%=parkingSpot.getmLatitude()%>&long=<%=parkingSpot.getmLongitude()%>">delete</a> <br> <%
  	}
  	}
  %>
@@ -44,13 +44,13 @@
 		Longitude: <input type="text" name="longitude">
 		Latitude: <input type="text" name="latitude">
 		StreetName: <input type="text" name="streetName">
-		DailyFreeParkingStartTime: <input type="text" name="dailyFreeParkingStartTime">
-		DailyFreeParkingEndTime: <input type="text" name="dailyFreeParkingEndTime">
-		HourlyFee: <input type="text" name="hourlyFee">
-		FreeDays: <input type="text" name="freeDays">
-		IsOccupied: <input type="text" name="isOccupied">
-		OccupiedStartTime: <input type="text" name="occupiedStartTime">
-		OccupiedEndTime: <input type="text" name="occupiedEndTime">
+		DailyFreeParkingStartTime: <input type="text" name="dailyFreeParkingStartTime" value = "0">
+		DailyFreeParkingEndTime: <input type="text" name="dailyFreeParkingEndTime" value = "0">
+		HourlyFee: <input type="text" name="hourlyFee" value = "0">
+		FreeDays: <input type="text" name="freeDays" value = "0">
+		IsOccupied: <input type="text" name="isOccupied" value = "1">
+		OccupiedStartTime: <input type="text" name="occupiedStartTime" value = "0">
+		OccupiedEndTime: <input type="text" name="occupiedEndTime" value = "0">
 		<input type="submit" value="Add">
 	</form>
 	---------------------------------------------------------------------

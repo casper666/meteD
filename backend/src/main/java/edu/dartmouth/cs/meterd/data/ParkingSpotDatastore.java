@@ -85,13 +85,13 @@ public class ParkingSpotDatastore {
         return false;
     }
 
-    public static boolean delete(ParkingSpot parkingSpot) {
+    public static boolean delete(Double lat, Double lng) {
         //set up filter
         Filter longitudeFilter = new FilterPredicate(ParkingSpot.FIELD_NAME_LONGITUDE,
-                FilterOperator.EQUAL, parkingSpot.mLongitude);
+                FilterOperator.EQUAL, lng);
 
         Filter latitudeFilter = new FilterPredicate(ParkingSpot.FIELD_NAME_LATITUDE,
-                FilterOperator.EQUAL, parkingSpot.mLatitude);
+                FilterOperator.EQUAL, lat);
 
         Filter coordFilter = Query.CompositeFilterOperator.and(longitudeFilter, latitudeFilter);
 
@@ -156,16 +156,16 @@ public class ParkingSpotDatastore {
         }
 
         return new ParkingSpot(
-                (float) entity.getProperty(ParkingSpot.FIELD_NAME_LONGITUDE),
-                (float) entity.getProperty(ParkingSpot.FIELD_NAME_LATITUDE),
+                (double) entity.getProperty(ParkingSpot.FIELD_NAME_LONGITUDE),
+                (double) entity.getProperty(ParkingSpot.FIELD_NAME_LATITUDE),
                 (String) entity.getProperty(ParkingSpot.FIELD_NAME_STREETNAME),
-                (int) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGSTARTTIME),
-                (int) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGENDTIME),
-                (float) entity.getProperty(ParkingSpot.FIELD_NAME_HOURLYFEE),
+                (Long) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGSTARTTIME),
+                (Long) entity.getProperty(ParkingSpot.FIELD_NAME_DAILYFREEPARKINGENDTIME),
+                (double) entity.getProperty(ParkingSpot.FIELD_NAME_HOURLYFEE),
                 (String) entity.getProperty(ParkingSpot.FIELD_NAME_FREEDAYS),
                 (boolean) entity.getProperty(ParkingSpot.FIELD_NAME_ISOCCUPIED),
-                (int) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDSTARTTIME),
-                (int) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDENDTIME));
+                (Long) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDSTARTTIME),
+                (Long) entity.getProperty(ParkingSpot.FIELD_NAME_OCCUPIEDENDTIME));
     }
 
 

@@ -43,10 +43,10 @@ public class AddServlet extends HttpServlet{
 
         System.out.printf("\n\nlongitude is %s, latitude is %s\n\n", longitude, latitude);
 
-        ParkingSpot parkingSpot = new ParkingSpot(Float.parseFloat(longitude), Float.parseFloat(latitude), streetName,
-                Integer.parseInt(dailyFreeParkingStartTime), Integer.parseInt(dailyFreeParkingEndTime),
-                Float.parseFloat(hourlyFee), freeDays, Boolean.parseBoolean(isOccupied),
-                Integer.parseInt(occupiedStartTime), Integer.parseInt(occupiedEndTime));
+        ParkingSpot parkingSpot = new ParkingSpot(Double.parseDouble(longitude), Double.parseDouble(latitude), streetName,
+                Long.parseLong(dailyFreeParkingStartTime), Long.parseLong(dailyFreeParkingEndTime),
+                Double.parseDouble(hourlyFee), freeDays, Boolean.parseBoolean(isOccupied),
+                Long.parseLong(occupiedStartTime), Long.parseLong(occupiedEndTime));
 
         boolean ret = ParkingSpotDatastore.add(parkingSpot);
 

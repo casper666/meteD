@@ -43,6 +43,27 @@
         <url-pattern>/query.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>querymob</servlet-name>
+        <!--<servlet-class>cs.dartmouth.edu.gcmdemo.backend.AddServlet</servlet-class>-->
+        <servlet-class>edu.dartmouth.cs.meterd.QueryMobServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>querymob</servlet-name>
+        <url-pattern>/querymob.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>delete</servlet-name>
+        <!--<servlet-class>cs.dartmouth.edu.gcmdemo.backend.AddServlet</servlet-class>-->
+        <servlet-class>edu.dartmouth.cs.meterd.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>delete</servlet-name>
+        <url-pattern>/delete.do</url-pattern>
+    </servlet-mapping>
+
+
     <welcome-file-list>
         <welcome-file>query.do</welcome-file>
     </welcome-file-list>

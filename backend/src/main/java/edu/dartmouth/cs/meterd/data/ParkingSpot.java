@@ -24,18 +24,18 @@ public class ParkingSpot {
     public double mLongitude;
     public double mLatitude;
     public String mStreetName;
-    public int mDailyFreeParkingStartTime;
-    public int mDailyFreeParkingEndTime;
+    public Long mDailyFreeParkingStartTime;
+    public Long mDailyFreeParkingEndTime;
     public double mHourlyFee;
     public String mFreeDays;
     public Boolean mIsOccupied;
-    public int mOccupiedStartTime;
-    public int mOccupiedEndTime;
+    public Long mOccupiedStartTime;
+    public Long mOccupiedEndTime;
 
     public ParkingSpot(double _longitude, double _latitude, String _streetName,
-                       int _dailyFreeParkingStartTime, int _dailyFreeParkingEndTime,
+                       Long _dailyFreeParkingStartTime, Long _dailyFreeParkingEndTime,
                        double _hourlyFee, String _freeDays, boolean _isOccupied,
-                       int _occupiedStartTime, int _occupiedEndTime) {
+                       Long _occupiedStartTime, Long _occupiedEndTime) {
         mLongitude = _longitude;
         mLatitude = _latitude;
         mStreetName = _streetName;
@@ -52,5 +52,53 @@ public class ParkingSpot {
         return Double.toString(this.mLongitude)
                 + "+" +
                 Double.toString(this.mLatitude);
+    }
+
+    public double getmLongitude() {
+        return mLongitude;
+    }
+
+    public void setmLongitude(double mLongitude) {
+        this.mLongitude = mLongitude;
+    }
+
+    public double getmLatitude() {
+        return mLatitude;
+    }
+
+    public void setmLatitude(double mLatitude) {
+        this.mLatitude = mLatitude;
+    }
+
+    public Long getmDailyFreeParkingStartTime() {
+        return mDailyFreeParkingStartTime;
+    }
+
+    public void setmDailyFreeParkingStartTime(Long mDailyFreeParkingStartTime) {
+        this.mDailyFreeParkingStartTime = mDailyFreeParkingStartTime;
+    }
+
+    public Long getmDailyFreeParkingEndTime() {
+        return mDailyFreeParkingEndTime;
+    }
+
+    public void setmDailyFreeParkingEndTime(Long mDailyFreeParkingEndTime) {
+        this.mDailyFreeParkingEndTime = mDailyFreeParkingEndTime;
+    }
+
+    public Long getmOccupiedStartTime() {
+        return mOccupiedStartTime;
+    }
+
+    public void setmOccupiedStartTime(Long mOccupiedStartTime) {
+        this.mOccupiedStartTime = mOccupiedStartTime;
+    }
+
+    public Long getmOccupiedEndTime() {
+        return mOccupiedEndTime;
+    }
+
+    public void setmOccupiedEndTime(Long mOccupiedEndTime) {
+        this.mOccupiedEndTime = mOccupiedEndTime;
     }
 }

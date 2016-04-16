@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import edu.dartmouth.cs.meterd.data.ParkingSpot;
 import edu.dartmouth.cs.meterd.data.ParkingSpotDatastore;
 
-public class QueryServlet extends HttpServlet{
+public class QueryMobServlet extends HttpServlet{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
@@ -27,27 +27,23 @@ public class QueryServlet extends HttpServlet{
 //        System.out.print("---------->" + name);
         ArrayList<ParkingSpot> result = ParkingSpotDatastore.query(1.0, 2.0);
         req.setAttribute("result", result);
-//        // creating the final JSON string
-//        JSONArray finalResult = new JSONArray();
-//        for (ParkingSpot p : result) {
-//            JSONObject curSpot = new JSONObject();
-//            try {
-//                curSpot.put("lat", p.getmLatitude());
-//                curSpot.put("long",p.getmLongitude());
-//                curSpot.put("start",p.getmOccupiedStartTime());
-//                curSpot.put("end",p.getmOccupiedEndTime());
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            finalResult.put(curSpot);
-//        }
-//        resp.setContentType("text");
-//        resp.setCharacterEncoding("UTF-8");
-//        resp.getWriter().write("Grader li diao bao le");
-
-        getServletContext().getRequestDispatcher("/query_result.jsp").forward(
-                req, resp);
-
+        // creating the final JSON string
+        JSONArray finalResult = new JSONArray();
+        for (ParkingSpot p : result) {
+            JSONObject curSpot = new JSONObject();
+            try {
+                curSpot.put("lat", p.getmLatitude());
+                curSpot.put("long",p.getmLongitude());
+                curSpot.put("start",p.getmOccupiedStartTime());
+                curSpot.put("end",p.getmOccupiedEndTime());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            finalResult.put(curSpot);
+        }
+        resp.setContentType("text");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(finalResult.toString());
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
