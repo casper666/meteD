@@ -176,7 +176,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
         mMap.setOnCameraChangeListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
         // mClusterManager.setAlgorithm(new PreCachingAlgorithmDecorator<ParkSlot>(new GridBasedAlgorithm<ParkSlot>()));
-
+        mClusterManager.setAlgorithm(new CustomNonHierarchicalDistanceBasedAlgorithm<ParkSlot>());
         // Add cluster items (markers) to the cluster manager.
         addItems();
     }
@@ -198,22 +198,43 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
             mClusterManager.addItem(offsetItem);
         }
 
-//        final ParkSlot removeItem = offsetItem;
-//
+        final ParkSlot removeItem = offsetItem;
+
 //        Thread thread = new Thread(new Runnable() {
 //
 //            @Override
 //            public void run() {
 //                try {
-//                    Thread.sleep(2);
+//                    Thread.sleep(2000);
 //                } catch (InterruptedException e) {
 //                    e.printStackTrace();
 //                }
 //                mClusterManager.removeItem(removeItem);
+//                mClusterManager.cluster();
 //            }
 //        });
 //
 //        thread.start();
+
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                mClusterManager.removeItem(removeItem);
+                mClusterManager.cluster();
+            }
+        }.execute();
 
     }
     static class GcmRegistrationAsyncTask extends AsyncTask<Void, Void, String> {
