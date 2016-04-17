@@ -6,7 +6,7 @@ with open('data.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         print(row['lat'], row['lng'])
-        r = requests.post("https://data-infinity-128221.appspot.com/add.do", data = {
+        r = requests.post("https://iron-tea-128423.appspot.com/add.do", data = {
         'longitude': row['lng'],
         'latitude': row['lat'],
         'streetName': 'a',

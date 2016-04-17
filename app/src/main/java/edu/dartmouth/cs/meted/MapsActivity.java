@@ -78,7 +78,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
     private FloatingActionButton mButton;
     // server address
 //    public static final String SERVER_ADDR = "http://169.254.180.233:8080";
-    public static final String SERVER_ADDR = "https://data-infinity-128221.appspot.com";
+    public static final String SERVER_ADDR = "https://iron-tea-128423.appspot.com";
     ArrayList<ParkSlot> mList = new ArrayList<>();
 
     @Override
